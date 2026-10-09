@@ -1,0 +1,271 @@
+:root {
+    --primary-pink: #f48fb1;
+    --deep-pink: #d81b60;
+    --bg-cream: #fffaf6;
+    --envelope-bg: #9c27b0;
+    --envelope-flap: #7b1fa2;
+    --text-dark: #374151;
+    --font-body: 'Nunito', sans-serif;
+    --font-hand: 'Caveat', cursive;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--text-dark);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+    /* Pink Gingham Pattern */
+    background-color: #fce4ec;
+    background-image:
+        linear-gradient(90deg, rgba(244, 143, 177, 0.3) 50%, transparent 50%),
+        linear-gradient(rgba(244, 143, 177, 0.3) 50%, transparent 50%);
+    background-size: 36px 36px;
+}
+
+.view {
+    width: 100%;
+    max-width: 480px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: opacity 0.3s ease;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Paper Card Aesthetic */
+.paper-shadow {
+    background: var(--bg-cream);
+    border-radius: 16px;
+    border: 1.5px solid rgba(224, 130, 163, 0.4);
+    box-shadow: 0 10px 25px rgba(216, 27, 96, 0.12);
+    padding: 28px 22px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+}
+
+.handwritten {
+    font-family: var(--font-hand);
+    font-size: 2.1rem;
+    line-height: 1.2;
+    color: #880e4f;
+}
+
+.subtitle {
+    font-size: 0.95rem;
+    margin: 8px 0 18px;
+    color: #6b7280;
+}
+
+/* Controls & Buttons */
+input[type="password"] {
+    width: 100%;
+    max-width: 200px;
+    padding: 10px 14px;
+    border: 2px solid #f8bbd0;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 1.1rem;
+    margin-bottom: 14px;
+    outline: none;
+}
+
+input[type="password"]:focus {
+    border-color: var(--deep-pink);
+}
+
+.btn {
+    background: var(--primary-pink);
+    color: white;
+    border: none;
+    font-weight: 700;
+    padding: 10px 22px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.btn:hover {
+    background: var(--deep-pink);
+    transform: scale(1.04);
+}
+
+.btn-round {
+    background: #f8bbd0;
+    border: none;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: #880e4f;
+}
+
+.error-msg {
+    color: #e53935;
+    font-size: 0.85rem;
+    margin-top: 10px;
+    min-height: 18px;
+}
+
+/* Envelopes Hub */
+.hub-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.hub-header p {
+    font-size: 0.9rem;
+    color: #6b7280;
+}
+
+.envelopes-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    width: 100%;
+}
+
+@media (min-width: 600px) {
+    .view {
+        max-width: 640px;
+    }
+
+    .envelopes-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.envelope-card {
+    background: #fff;
+    border: 2px solid #e1bee7;
+    border-radius: 12px;
+    padding: 16px 12px;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 110px;
+}
+
+.envelope-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(123, 31, 162, 0.15);
+}
+
+.envelope-card.opened {
+    opacity: 0.75;
+    background: #fdf7fc;
+}
+
+.envelope-card .badge {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #8e24aa;
+}
+
+.envelope-card .title {
+    font-family: var(--font-hand);
+    font-size: 1.3rem;
+    line-height: 1.15;
+    color: #4a148c;
+    margin: 6px 0;
+}
+
+.envelope-card .status {
+    font-size: 0.75rem;
+    color: #9e9e9e;
+}
+
+/* Floating Music Toggle */
+.music-btn {
+    position: fixed;
+    bottom: 18px;
+    right: 18px;
+    background: #fff;
+    border: 2px solid var(--primary-pink);
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+}
+
+/* Modal View */
+.modal {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+    z-index: 50;
+}
+
+.modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(2px);
+}
+
+.modal-content {
+    z-index: 1;
+    max-width: 440px;
+    max-height: 85vh;
+    overflow-y: auto;
+    text-align: left;
+}
+
+.modal-controls {
+    margin-bottom: 12px;
+}
+
+.letter-text {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    color: #424242;
+}
+
+/* Polaroid Card */
+.polaroid {
+    background: #fff;
+    padding: 8px 8px 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    border: 1px solid #eee;
+    margin-bottom: 18px;
+    text-align: center;
+    transform: rotate(-1.5deg);
+}
+
+.polaroid img {
+    width: 100%;
+    max-height: 220px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.polaroid span {
+    display: block;
+    margin-top: 8px;
+    font-size: 1.2rem;
+    color: #555;
+}

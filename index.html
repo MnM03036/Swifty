@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A Little Surprise</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Nunito:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <!-- Background Music Player -->
+    <audio id="bg-music" loop preload="auto">
+        <source
+            src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=sweet-love-112199.mp3"
+            type="audio/mpeg" />
+    </audio>
+    <button id="music-toggle" class="music-btn" title="Toggle Music">🎵</button>
+
+    <!-- Passcode Screen -->
+    <section id="lock-screen" class="view active">
+        <div class="card paper-shadow">
+            <div class="stamp">🔒</div>
+            <h2>For Your Eyes Only</h2>
+            <p class="subtitle">Enter the secret key to unlock your surprise:</p>
+            <input type="password" id="passcode-input" placeholder="e.g. 1024" maxlength="10" />
+            <button id="unlock-btn" class="btn">Unlock</button>
+            <p id="lock-error" class="error-msg"></p>
+        </div>
+    </section>
+
+    <!-- Conversational Intro Sequence -->
+    <section id="intro-screen" class="view hidden">
+        <div class="card paper-shadow intro-card">
+            <div id="intro-sticker" class="character-sticker">🌸</div>
+            <h2 id="intro-text" class="handwritten">I made something for you</h2>
+            <div id="intro-actions" class="action-row">
+                <!-- Buttons injected dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Envelopes Hub -->
+    <section id="hub-screen" class="view hidden">
+        <header class="hub-header">
+            <h1 class="handwritten">Open When...</h1>
+            <p>Tap a letter whenever you need it.</p>
+        </header>
+        <div id="envelopes-grid" class="envelopes-grid">
+            <!-- Injected from script.js -->
+        </div>
+    </section>
+
+    <!-- Letter Reader Modal -->
+    <section id="letter-modal" class="modal hidden">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content paper-shadow">
+            <div class="modal-controls">
+                <button id="back-btn" class="btn-round" title="Back to Envelopes">←</button>
+            </div>
+            <div class="letter-body">
+                <div id="letter-polaroid" class="polaroid hidden">
+                    <img id="polaroid-img" src="" alt="Memory" />
+                    <span id="polaroid-caption" class="handwritten"></span>
+                </div>
+                <p id="letter-text" class="letter-text"></p>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
